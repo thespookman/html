@@ -1,8 +1,8 @@
 LIBRARY = libspkhtml.a 
 INCLUDE = spk_html.hpp
 
-BINARY_TAGS = abbr acronym address a applet article aside audio bdi bdo big blockquote body b caption canvas center cite code colgroup data datalist dd dfn details dialog dir div dl dt fieldset figcaption figure font footer form frame head header h1 h2 h3 h4 h5 h6 hgroup html iframe input ins i kbd label legend li main mark marquee menuitem meter nav nobr noembed noscript object optgroup option output p em pre progress q rp rt ruby s samp script section small source span strike strong sub sup summary table tbody td tfoot th thead time title tr tt u var video xmp
-UNARY_TAGS  = area base basefont bgsound br button col embed frameset heading hr img input isindex keygen meta param spacer style svg track wbr
+BINARY_TAGS = Abbr Acronym Address A Applet Article Aside Audio Bdi Bdo Big Blockquote Body B Caption Canvas Center Cite Code Colgroup Data Datalist Dd Delete Dfn Details Dialog Dir Div Dl Dt Fieldset Figcaption Figure Font Footer Form Frame Head Header H1 H2 H3 H4 H5 H6 Hgroup Html Iframe Input Ins I Kbd Label Legend Li Main Mark Marquee Menuitem Meter Nav Nobr Noembed Noscript Object Optgroup Option Output P Em Pre Progress Q Rp Rt Ruby S Samp Script Section Small Source Span Strike Strong Sub Sup Summary Table Tbody Td Template Tfoot Th Thead Time Title Tr Tt U Var Video Xmp
+UNARY_TAGS  = Area Base Basefont Bgsound Br Button Col Embed Frameset Heading Hr Img Input Isindex Keygen Meta Param Spacer Style Svg Track Wbr
 
 INC_TEMP = inc/inc_template.hpp
 SRC_TEMP = inc/src_template.hpp

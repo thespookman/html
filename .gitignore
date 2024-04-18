@@ -3,6 +3,6 @@ bin_src/
 bld/
 dep/
 libspkhtml.a
-spkhtml.hpp
+spk_html.hpp
 un_bld/
 un_src/
