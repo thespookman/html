@@ -6,3 +6,4 @@ libspkhtml.a
 spk_html.hpp
 un_bld/
 un_src/
+*.spec

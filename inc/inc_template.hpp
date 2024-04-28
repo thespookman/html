@@ -1,14 +1,16 @@
 #pragma once
-#include <map>
+#include "parameter.hpp"
+
+#include <list>
 #include <string>
 
-#define HTML_BIN(tag)                                                     \
-    std::string tag (std::string                        content = "",     \
-                     std::map<std::string, std::string> params  = {});     \
-    std::string tag (std::map<std::string, std::string> params);
-#define HTML_UN(tag)                                                      \
-    std::string tag (std::map<std::string, std::string> params = {});
 namespace spk {
 namespace html {
-std::string Comment (std::string content);
+#define HTML_BIN(tag)                                                     \
+    std::string tag (const std::string&          content = "",            \
+                     const std::list<Parameter>& params  = {});            \
+    std::string tag (const std::list<Parameter>& params);
+#define HTML_UN(tag)                                                      \
+    std::string tag (const std::list<Parameter>& params = {});
+std::string Comment (const std::string& content);
 std::string Doctype ();

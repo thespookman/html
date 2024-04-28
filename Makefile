@@ -1,7 +1,7 @@
 LIBRARY = libspkhtml.a 
 INCLUDE = spk_html.hpp
 
-BINARY_TAGS = Abbr Acronym Address A Applet Article Aside Audio Bdi Bdo Big Blockquote Body B Caption Canvas Center Cite Code Colgroup Data Datalist Dd Delete Dfn Details Dialog Dir Div Dl Dt Fieldset Figcaption Figure Font Footer Form Frame Head Header H1 H2 H3 H4 H5 H6 Hgroup Html Iframe Input Ins I Kbd Label Legend Li Main Mark Marquee Menuitem Meter Nav Nobr Noembed Noscript Object Optgroup Option Output P Em Pre Progress Q Rp Rt Ruby S Samp Script Section Small Source Span Strike Strong Sub Sup Summary Table Tbody Td Template Tfoot Th Thead Time Title Tr Tt U Var Video Xmp
+BINARY_TAGS = Abbr Acronym Address A Applet Article Aside Audio Bdi Bdo Big Blockquote Body B Caption Canvas Center Cite Code Colgroup Data Datalist Dd Delete Dfn Details Dialog Dir Div Dl Dt Fieldset Figcaption Figure Font Footer Form Frame Head Header H1 H2 H3 H4 H5 H6 Hgroup Html Iframe Ins I Kbd Label Legend Li Main Mark Marquee Menuitem Meter Nav Nobr Noembed Noscript Object Optgroup Option Output P Em Pre Progress Q Rp Rt Ruby S Samp Script Section Small Source Span Strike Strong Sub Sup Summary Table Tbody Td Template Tfoot Th Thead Time Title Tr Tt U Var Video Xmp
 UNARY_TAGS  = Area Base Basefont Bgsound Br Button Col Embed Frameset Heading Hr Img Input Isindex Keygen Meta Param Spacer Style Svg Track Wbr
 
 INC_TEMP = inc/inc_template.hpp
@@ -34,13 +34,17 @@ SRC = $(BIN_SRC) $(UN_SRC) $(OTH_SRC)
 DEP = $(BIN_DEP) $(UN_DEP) $(OTH_DEP)
 OBJ = $(BIN_OBJ) $(UN_OBJ) $(OTH_OBJ)
 
+TEST_SRC = test/html.spec.cpp
+TEST = html.spec
+
 COMPILE_FLAG = -std=c++23 -Wextra -Wno-implicit-fallthrough -fconcepts-diagnostics-depth=2
-INCLUDE_FLAG = -I$(INC_DIR)
+INCLUDE_FLAG = -I$(INC_DIR) -I.
 DEPEND_FLAG = -MT $@ -MMD -MP -MF 
 COMPILE = g++ $(COMPILE_FLAG) $(INCLUDE_FLAG)
+TEST_LINK_FLAG = $(LIBRARY) -lCatch2Main -lCatch2 
 
 .PHONY: all
-all: $(LIBRARY) $(INCLUDE)
+all: $(LIBRARY) $(INCLUDE) $(TEST)
 
 $(INCLUDE): $(INC_TEMP)
 	cat $(INC_TEMP) > $@
@@ -75,6 +79,10 @@ $(UN_BLD_DIR)/%.o: $(UN_SRC_DIR)/%.cpp $(DEP_DIR)/%.d
 $(BIN_BLD_DIR)/%.o: $(BIN_SRC_DIR)/%.cpp $(DEP_DIR)/%.d
 	mkdir -p $(@D)
 	$(COMPILE) $(DEPEND_FLAG) $(DEP_DIR)/$*.d -c $< -o $@
+
+$(TEST): $(TEST_SRC) $(INCLUDE) $(LIBRARY)
+	$(COMPILE) $< -o $@ $(TEST_LINK_FLAG)
+	./$@
 
 $(LIBRARY): $(OBJ)
 	ar r $@ $^

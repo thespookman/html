@@ -1,19 +1,26 @@
-#include <map>
+#include "parameter.hpp"
+
+#include <list>
 #include <string>
 namespace spk {
 namespace html {
-using std::map;
-using std::pair;
+using std::list;
 using std::string;
-string concat_params (map<string, string> params) {
+string concat_params (const list<Parameter>& params) {
     string ret = "";
-    for (pair<string, string> p : params)
-        ret += string (" ") + p.first + "=\"" + p.second + "\"";
+    for (const Parameter& p : params)
+        ret += string (" ") + p.key +
+               (p.has_value ? "=\"" + p.value : "") + "\"";
     return ret;
 }
-string Comment (string content) {
+string Comment (const string& content) {
     return string ("<!--") + content + "-->";
 }
 string Doctype () { return "<!DOCTYPE html>"; }
+
+Parameter::Parameter (string _key)
+    : key {_key}, value {""}, has_value {false} {}
+Parameter::Parameter (string _key, string _value)
+    : key {_key}, value {_value}, has_value {true} {}
 }; // namespace html
 }; // namespace spk

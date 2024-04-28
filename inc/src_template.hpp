@@ -1,18 +1,20 @@
-#include <map>
-#include <string>
-using std::map;
-using std::string;
-#define HTML_BIN(tag)                                                     \
-    string tag (string contents, map<string, string> params) {            \
-        return string ("<") + #tag + concat_params (params) + ">" +       \
-               contents + "</" + #tag + "> ";                             \
-    }                                                                     \
-    string tag (map<string, string> params) { return tag ({}, params); }
+#include "parameter.hpp"
 
-#define HTML_UN(tag)                                                      \
-    string tag (map<string, string> params) {                             \
-        return string ("<") + #tag + concat_params (params) + ">";        \
-    }
+#include <list>
+#include <string>
+using std::list;
+using std::string;
 namespace spk {
 namespace html {
-string concat_params (map<string, string> params);
+#define HTML_BIN(tag)                                                     \
+    string tag (const string& contents, const list<Parameter>& params) {  \
+        return string ("<") + #tag + concat_params (params) + ">" +       \
+               contents + "</" + #tag + ">";                              \
+    }                                                                     \
+    string tag (const list<Parameter>& params) { return tag ({}, params); }
+
+#define HTML_UN(tag)                                                      \
+    string tag (const list<Parameter>& params) {                          \
+        return string ("<") + #tag + concat_params (params) + ">";        \
+    }
+string concat_params (const list<Parameter>& params);
