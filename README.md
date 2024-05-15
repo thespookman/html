@@ -2,9 +2,12 @@
 
 Simple C++ html builder
 
-## Building  
+## Build
 
 Just `make all`, it doesn't have any dependencies other than the standard libraries. 
+
+## Install
+`# make install`, which by default uses `DESTDIR=/usr`, I recommend setting `DESTDIR` to install somewhere else.
 
 ## Usage  
 

@@ -1,3 +1,7 @@
+DESTDIR?=/usr
+DEST_LIB=$(DESTDIR)/lib
+DEST_INC=$(DESTDIR)/include
+
 LIBRARY = libspkhtml.a 
 INCLUDE = spk_html.hpp
 
@@ -42,6 +46,16 @@ INCLUDE_FLAG = -I$(INC_DIR) -I.
 DEPEND_FLAG = -MT $@ -MMD -MP -MF 
 COMPILE = g++ $(COMPILE_FLAG) $(INCLUDE_FLAG)
 TEST_LINK_FLAG = $(LIBRARY) -lCatch2Main -lCatch2 
+
+.PHONY: install
+install: $(LIBRARY) $(INCLUDE)
+	mkdir -p "$(DEST_LIB)" "$(DEST_INC)"
+	cp $(LIBRARY) "$(DEST_LIB)"
+	cp $(INCLUDE) "$(DEST_INC)"
+
+.PHONY: uninstall
+uninstall:
+	rm "$(DEST_LIB)/$(LIBRARY)" "$(DEST_INC)/$(INCLUDE)"
 
 .PHONY: all
 all: $(LIBRARY) $(INCLUDE) $(TEST)
