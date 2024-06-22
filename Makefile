@@ -5,7 +5,7 @@ DEST_INC=$(DESTDIR)/include
 LIBRARY = libspkhtml.a 
 INCLUDE = spk_html.hpp
 
-BINARY_TAGS = Abbr Acronym Address A Applet Article Aside Audio Bdi Bdo Big Blockquote Body B Caption Canvas Center Cite Code Colgroup Data Datalist Dd Delete Dfn Details Dialog Dir Div Dl Dt Fieldset Figcaption Figure Font Footer Form Frame Head Header H1 H2 H3 H4 H5 H6 Hgroup Html Iframe Ins I Kbd Label Legend Li Main Mark Marquee Menuitem Meter Nav Nobr Noembed Noscript Object Optgroup Option Output P Em Pre Progress Q Rp Rt Ruby S Samp Script Section Small Source Span Strike Strong Sub Sup Summary Table Tbody Td Template Tfoot Th Thead Time Title Tr Tt U Var Video Xmp
+BINARY_TAGS = Abbr Acronym Address A Applet Article Aside Audio Bdi Bdo Big Blockquote Body B Caption Canvas Center Cite Code Colgroup Data Datalist Dd Delete Dfn Details Dialog Dir Div Dl Dt Fieldset Figcaption Figure Font Footer Form Frame Head Header H1 H2 H3 H4 H5 H6 Hgroup Html Iframe Ins I Kbd Label Legend Li Main Mark Marquee Menuitem Meter Nav Nobr Noembed Noscript Object Optgroup Option Output P Em Pre Progress Q Rp Rt Ruby S Samp Script Section Select Small Source Span Strike Strong Sub Sup Summary Table Tbody Td Template Tfoot Th Thead Time Title Tr Tt U Var Video Xmp
 UNARY_TAGS  = Area Base Basefont Bgsound Br Button Col Embed Frameset Heading Hr Img Input Isindex Keygen Meta Param Spacer Style Svg Track Wbr
 
 INC_TEMP = inc/inc_template.hpp
